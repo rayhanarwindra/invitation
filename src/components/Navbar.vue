@@ -65,6 +65,7 @@ const toggleLanguage = (lang: string) => {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 576px;
   background: rgba($color: #202020, $alpha: 0.9);
   padding: 8px 16px;
   box-sizing: border-box;
