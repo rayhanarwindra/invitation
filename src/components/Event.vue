@@ -15,7 +15,7 @@
       <span class="details__highlight"> 11:00-13:00 </span>
     </div>
     <div class="event__location location">
-      <img :src="PinPoint" />
+      <img alt="pinpoint" :src="PinPoint" />
       <div class="location__details">
         <span class="location__building">MASJID AGUNG AL-AZHAR</span>
         <span class="location__area">KEBAYORAN BARU, JAKARTA SELATAN</span>
@@ -34,10 +34,10 @@
       </iframe>
     </div>
     <a target="_blank" :href="calendarLink" class="event__calendar">
-        <img :src="GoogleCalendar"/>
+        <img alt="calendar" :src="GoogleCalendar"/>
         {{ t('add_to_calendar') }}
     </a>
-    <img :src="Masjid" class="event__masjid"/>
+    <img alt="masjid background" :src="Masjid" class="event__masjid"/>
   </div>
 </template>
 

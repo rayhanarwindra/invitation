@@ -1,7 +1,7 @@
 <template>
   <div class="landing">
-    <img class="landing__image" :src="Banner"/>
-    <img class="landing__gif" src="https://i.gifer.com/2iiB.gif" alt="">
+    <img alt="landing image" class="landing__image" :src="Banner"/>
+    <img alt="sparkle gif" class="landing__gif" src="https://i.gifer.com/2iiB.gif">
   </div>
 </template>
 

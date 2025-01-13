@@ -6,22 +6,22 @@
     <div ref="langDropdown" class="navbar__language language">
       <button @click="isLangOpen = !isLangOpen" class="language__button">
         <template v-if="i18n.locale.value === 'id'">
-          <img :src="Indonesian" />
+          <img alt="indo flag" :src="Indonesian" />
           Bahasa
         </template>
         <template v-else>
-          <img :src="English" />
+          <img alt="uk flag" :src="English" />
           English
         </template>
-        <img :src="ChevronDown" />
+        <img alt="chevron down" :src="ChevronDown" />
       </button>
       <div v-show="isLangOpen" class="language__dropdown">
         <button @click="toggleLanguage('id')" class="language__option">
-          <img :src="Indonesian" />
+          <img alt="indo flag" :src="Indonesian" />
           Bahasa
         </button>
         <button @click="toggleLanguage('en')" class="language__option">
-          <img :src="English" />
+          <img alt="uk flag" :src="English" />
           English
         </button>
       </div>
