@@ -110,6 +110,7 @@ const calendarLink = "https://calendar.google.com/calendar/render?action=TEMPLAT
   justify-content: center;
   align-items: center;
   gap: 12px;
+  margin-top: 16px;
 
   &__highlight {
     color: #000;
