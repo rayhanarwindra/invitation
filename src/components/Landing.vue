@@ -13,7 +13,7 @@ import Banner from "../assets/Rayhan & Nabila Wedding Invitation RGB.webp";
 .landing {
     width: 100%;
     position: relative;
-    height: 669px;
+    height: fit-content;
 
     &__gif {
         position: absolute;
