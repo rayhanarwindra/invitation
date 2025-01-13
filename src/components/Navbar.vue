@@ -39,7 +39,6 @@ import { useI18n } from "vue-i18n";
 const isLangOpen = ref<boolean>(false);
 const langDropdown: Ref<HTMLDivElement | null> = ref(null);
 const i18n = useI18n();
-const t = i18n.t
 
 onMounted(() => {
   document.addEventListener("click", handleClickOutside);
