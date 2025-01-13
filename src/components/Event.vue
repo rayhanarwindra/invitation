@@ -23,6 +23,7 @@
     </div>
     <div class="event__map">
       <iframe
+        title="google maps"
         width="300"
         height="300"
         style="border: 0"
