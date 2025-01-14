@@ -35,10 +35,10 @@
       </iframe>
     </div>
     <a target="_blank" :href="calendarLink" class="event__calendar">
-        <img alt="calendar" :src="GoogleCalendar"/>
-        {{ t('add_to_calendar') }}
+      <img alt="calendar" :src="GoogleCalendar" />
+      {{ t("add_to_calendar") }}
     </a>
-    <img alt="masjid background" :src="Masjid" class="event__masjid"/>
+    <img alt="masjid background" :src="Masjid" class="event__masjid" />
   </div>
 </template>
 
@@ -47,10 +47,14 @@ import { useI18n } from "vue-i18n";
 import PinPoint from "../assets/pinpoint.svg";
 import GoogleCalendar from "../assets/google_calendar.svg";
 import Masjid from "../assets/masjid.svg";
+import { onMounted } from "vue";
+
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 const PLACE_ID = import.meta.env.VITE_PLACE_ID;
+
 const { t } = useI18n();
-const calendarLink = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ray+%26+Nabila%27s+Wedding&dates=20251011T110000/20251011T130000&details=Ray+%26+Nabila%27s+Wedding&location=Masjid+Agung+Al-Azhar+Blok+M%2C+Jakarta%2C+Indonesia&ctz=Asia/Jakarta"
+const calendarLink =
+  "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ray+%26+Nabila%27s+Wedding&dates=20251011T110000/20251011T130000&details=Ray+%26+Nabila%27s+Wedding&location=Masjid+Agung+Al-Azhar+Blok+M%2C+Jakarta%2C+Indonesia&ctz=Asia/Jakarta";
 </script>
 
 <style scoped lang="scss">
@@ -156,27 +160,27 @@ const calendarLink = "https://calendar.google.com/calendar/render?action=TEMPLAT
 }
 
 .location {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  gap: 14px;
+
+  &__details {
     display: flex;
-    justify-content: center;
-    margin-top: 24px;
-    gap: 14px;
+    flex-direction: column;
+    font-weight: 500;
+  }
 
-    &__details {
-        display: flex;
-        flex-direction: column;
-        font-weight: 500;
-    }
+  &__building {
+    font-size: 16px;
+    line-height: 24px;
+    color: #5b8568;
+  }
 
-    &__building {
-        font-size: 16px;
-        line-height: 24px;
-        color: #5b8568;
-    }
-
-    &__area {
-        font-size: 12px;
-        line-height: 18px;
-        color: #000;
-    }
+  &__area {
+    font-size: 12px;
+    line-height: 18px;
+    color: #000;
+  }
 }
 </style>
