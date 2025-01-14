@@ -47,7 +47,6 @@ import { useI18n } from "vue-i18n";
 import PinPoint from "../assets/pinpoint.svg";
 import GoogleCalendar from "../assets/google_calendar.svg";
 import Masjid from "../assets/masjid.svg";
-import { onMounted } from "vue";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 const PLACE_ID = import.meta.env.VITE_PLACE_ID;
