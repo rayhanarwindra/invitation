@@ -83,6 +83,7 @@ const preLoadImage = () => {
   }
   &__image {
     width: 100%;
+    height: 864px;
     object-fit: cover;
   }
 }
