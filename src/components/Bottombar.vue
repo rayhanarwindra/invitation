@@ -47,8 +47,8 @@ const items = ref([
         background: rgba($color: #202020, $alpha: 0.9);
         width: 100%;
         box-sizing: border-box;
-        width: 576px;
-        padding: 24px 32px;
+        max-width: 576px;
+        padding: 24px 32px 12px;
         border-radius: 24px 24px 0 0;
 
         &__item {
