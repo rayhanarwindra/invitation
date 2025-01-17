@@ -1,7 +1,7 @@
 <template>
   <div class="bottomBar">
     <div class="bottomBar__item" v-for="item in items">
-      <img :src="item.image" />
+      <img :src="item.image" :alt="item.text" />
       <span>{{ t(item.text) }}</span>
     </div>
   </div>
