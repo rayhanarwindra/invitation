@@ -6,6 +6,7 @@ import {
   Gallery,
   Gift,
   Message,
+  BottomBar
 } from "./components/index.ts";
 </script>
 
@@ -18,6 +19,7 @@ import {
       <Gallery />
       <Gift />
       <Message />
+      <BottomBar />
     </div>
   </div>
 </template>

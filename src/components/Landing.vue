@@ -40,8 +40,8 @@ const preLoadImage = () => {
 <style scoped lang="scss">
 .landing {
   width: 100%;
+  margin-top: 48px;
   position: relative;
-  height: 864px;
 
   &__skeleton {
     width: 576px;
@@ -83,7 +83,6 @@ const preLoadImage = () => {
   }
   &__image {
     width: 100%;
-    height: 864px;
     object-fit: cover;
   }
 }
