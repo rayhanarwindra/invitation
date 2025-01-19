@@ -103,7 +103,7 @@ const calendarLink =
 
   &__masjid {
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     width: 100%;
     z-index: 1;
     object-fit: cover;
