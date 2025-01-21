@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTemplateRef, type Ref } from "vue";
+import { useTemplateRef } from "vue";
 import {
   Navbar,
   Landing,
