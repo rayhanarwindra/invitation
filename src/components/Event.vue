@@ -1,5 +1,5 @@
 <template>
-  <div class="event">
+  <div ref="rootElement" class="event">
     <div class="event__title">{{ t("event_details") }}</div>
     <div class="event__details details">
       <span class="details__highlight">
@@ -17,7 +17,7 @@
     <div class="event__location location">
       <img alt="pinpoint" :src="PinPoint" />
       <div class="location__details">
-        <span class="location__building">{{ t('al_azhar') }}</span>
+        <span class="location__building">{{ t("al_azhar") }}</span>
         <span class="location__area">KEBAYORAN BARU, JAKARTA SELATAN</span>
       </div>
     </div>
@@ -47,6 +47,7 @@ import { useI18n } from "vue-i18n";
 import PinPoint from "../assets/pinpoint.svg";
 import GoogleCalendar from "../assets/google_calendar.svg";
 import Masjid from "../assets/masjid.svg";
+import { ref } from "vue";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 const PLACE_ID = import.meta.env.VITE_PLACE_ID;
@@ -54,6 +55,12 @@ const PLACE_ID = import.meta.env.VITE_PLACE_ID;
 const { t } = useI18n();
 const calendarLink =
   "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ray+%26+Nabila%27s+Wedding&dates=20251011T110000/20251011T130000&details=Ray+%26+Nabila%27s+Wedding&location=Masjid+Agung+Al-Azhar+Blok+M%2C+Jakarta%2C+Indonesia&ctz=Asia/Jakarta";
+
+const rootElement = ref<HTMLElement | null>(null);
+
+defineExpose({
+  getRootElement: () => rootElement.value,
+})
 </script>
 
 <style scoped lang="scss">

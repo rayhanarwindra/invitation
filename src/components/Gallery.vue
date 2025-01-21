@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery">
+  <div ref="rootElement" class="gallery">
     <span class="gallery__title">{{ t("gallery") }}</span>
     <div class="gallery__photos photos">
       <img class="photos__one" :src="Gallery1" alt="photo gallery 1" />
@@ -14,14 +14,20 @@ import { useI18n } from "vue-i18n";
 import Gallery1 from "../assets/gallery_1.webp";
 import Gallery2 from "../assets/gallery_2.webp";
 import Gallery3 from "../assets/gallery_3.webp";
+import { ref } from "vue";
+
 const { t } = useI18n();
+
+const rootElement = ref<HTMLElement | null>(null);
+defineExpose({
+  getRootElement: () => rootElement.value,
+});
 </script>
 
 <style scoped lang="scss">
 .gallery {
   background-color: #312a17;
   margin: 0;
-  padding-bottom: 90px;
 
   &__title {
     display: block;
@@ -42,9 +48,9 @@ const { t } = useI18n();
   gap: 10px;
 
   & > img {
-  transition: 0.3s;
+    transition: 0.3s;
     &:hover {
-        transform: scale(1.02);
+      transform: scale(1.02);
     }
   }
 

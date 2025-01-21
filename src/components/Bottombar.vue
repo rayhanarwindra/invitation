@@ -1,9 +1,9 @@
 <template>
   <div class="bottomBar">
-    <div class="bottomBar__item" v-for="item in items">
+    <button @click="$emit(item.text)" class="bottomBar__item" v-for="item in items">
       <img :src="item.image" :alt="item.text" />
       <span>{{ t(item.text) }}</span>
-    </div>
+    </button>
   </div>
 </template>
 
@@ -38,42 +38,44 @@ const items = ref([
 </script>
 
 <style scoped lang="scss">
-    .bottomBar {
-        position: fixed;
-        bottom: 0;
-        display: flex;
-        justify-content: space-between;
-        z-index: 3;
-        background: rgba($color: #202020, $alpha: 0.9);
-        width: 100%;
-        box-sizing: border-box;
-        max-width: 576px;
-        padding: 24px 32px 12px;
-        border-radius: 24px 24px 0 0;
+.bottomBar {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 3;
+  background: rgba($color: #202020, $alpha: 0.9);
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 576px;
+  padding: 24px 32px 12px;
+  border-radius: 24px 24px 0 0;
 
-        &__item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #999;
-            font-size: 12px;
-            line-height: 18px;
-            font-weight: 500;
-            gap: 8px;
-            cursor: pointer;
-            transition: 0.3s;
+  &__item {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #999;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.3s;
 
-            &:hover {
-                & > img {
-                    transform: scale(1.1);
-                }
-            }
-
-            & > img {
-                width: 24px;
-                height: 24px;
-                transition: 0.3s;
-            }
-        }
+    &:hover {
+      & > img {
+        transform: scale(1.1);
+      }
     }
+
+    & > img {
+      width: 24px;
+      height: 24px;
+      transition: 0.3s;
+    }
+  }
+}
 </style>
