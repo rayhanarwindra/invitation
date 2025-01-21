@@ -7,6 +7,8 @@ const id = {
   gallery: "Galeri",
   gift: "Kado",
   message: "Pesan",
+  al_azhar: "MASJID AGUNG AL-AZHAR"
+
 };
 
 export default id;

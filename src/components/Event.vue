@@ -17,7 +17,7 @@
     <div class="event__location location">
       <img alt="pinpoint" :src="PinPoint" />
       <div class="location__details">
-        <span class="location__building">MASJID AGUNG AL-AZHAR</span>
+        <span class="location__building">{{ t('al_azhar') }}</span>
         <span class="location__area">KEBAYORAN BARU, JAKARTA SELATAN</span>
       </div>
     </div>

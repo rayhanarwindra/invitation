@@ -7,6 +7,7 @@ const en = {
   gallery: "Gallery",
   gift: "Gift",
   message: "Message",
+  al_azhar: "AL-AZHAR GREAT MOSQUE"
 };
 
 export default en;
