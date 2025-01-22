@@ -114,6 +114,7 @@ defineExpose({
   flex-direction: column;
   align-items: center;
   padding-bottom: 128px;
+  margin-top: 30px;
 
   &__title {
     color: #5b8568;
