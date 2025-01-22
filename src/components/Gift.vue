@@ -41,8 +41,8 @@
 import { useI18n } from "vue-i18n";
 import { useToast } from "vue-toast-notification";
 
-import honeymoon from "../assets/honeymoon.svg";
-import house from "../assets/house.svg";
+import honeymoon from "../assets/honeymoon.webp";
+import house from "../assets/house.webp";
 import qris from "../assets/qris.png";
 import copy from "../assets/copy.svg";
 import { ref } from "vue";
@@ -77,7 +77,7 @@ defineExpose({
     display: flex;
     justify-content: space-between;
     margin-top: 36px;
-    width: 70%;
+    width: 320px;
   }
 
   &__qris {
