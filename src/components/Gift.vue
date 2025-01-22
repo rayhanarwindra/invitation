@@ -53,8 +53,8 @@ const toast = useToast();
 const copyBankAccount = async () => {
   await navigator.clipboard.writeText("5405202376");
   toast.default(t('copied'), {
-    position: 'bottom',
-    duration: 1000,
+    position: 'top',
+    duration: 2500,
     queue: true
   })
 };

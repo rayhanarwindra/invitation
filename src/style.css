@@ -8,4 +8,5 @@ body .v-toast__text {
 
 body .v-toast__item--default {
     background-color: rgba(32, 32, 32, 0.9) !important;
+    border-radius: 24px;
 }
