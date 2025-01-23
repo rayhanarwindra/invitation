@@ -112,7 +112,8 @@ const toggleLanguage = (lang: string) => {
     align-items: flex-start;
     width: 132px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    left: -12px;
+    left: -25px;
+    top: 30px;
   }
 
   &__option {
@@ -122,6 +123,10 @@ const toggleLanguage = (lang: string) => {
     background: #fff;
     width: 100%;
     transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
 
     &:first-child {
       border-radius: 16px 16px 0 0;
