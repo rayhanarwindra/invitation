@@ -70,7 +70,7 @@ const toggleLanguage = (lang: string) => {
   padding: 8px 16px;
   box-sizing: border-box;
   position: fixed;
-  z-index: 3;
+  z-index: 4;
 
   &__title {
     color: #fff;
