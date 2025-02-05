@@ -191,6 +191,7 @@ defineExpose({
   }
 
   &__details {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -199,6 +200,7 @@ defineExpose({
     background: #e5dfdb;
     padding: 16px;
     width: 270px;
+    z-index: 3;
   }
 
   &__account {

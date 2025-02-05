@@ -22,9 +22,9 @@ const en = {
   write_message: "Your message",
   name: "Name",
   write_name: "Your name",
-  send_message: "Send Message"
-
-  
+  send_message: "Send Message",
+  message_sent: "Message sent",
+  thank_you: "Thank you"
 };
 
 export default en;

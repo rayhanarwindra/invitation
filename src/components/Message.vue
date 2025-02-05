@@ -2,7 +2,11 @@
   <div class="message" ref="rootElement">
     <div class="message__title">{{ t("messages") }}</div>
     <div class="message__content">
-      <form @submit.prevent="submitMessage" class="message__form form">
+      <form
+        v-if="!isMessageSent"
+        @submit.prevent="submitMessage"
+        class="message__form form"
+      >
         <div class="form__group">
           <label for="message" class="form__label">{{
             t("anything_to_say")
@@ -28,6 +32,13 @@
         </div>
         <button class="form__button">{{ t("send_message") }}</button>
       </form>
+      <div class="message__sent sent" v-else>
+        <img class="sent__check" :src="check" alt="check" />
+        <span class="sent__text">
+          <span class="sent__green">{{ t("message_sent") }}!</span>
+          {{ t("thank_you") }}.
+        </span>
+      </div>
       <div class="message__items">
         <div class="message__item item" v-for="message in messages">
           <span class="item__sender">{{ message.sender }}</span>
@@ -42,6 +53,7 @@
 import { onMounted, reactive, ref } from "vue";
 import { useI18n } from "vue-i18n";
 import { supabase } from "../lib/supabaseClient";
+import check from "../assets/check.svg";
 
 interface MessageType {
   sender: string;
@@ -53,6 +65,7 @@ interface MessageType {
 const { t } = useI18n();
 
 const rootElement = ref<HTMLElement | null>(null);
+const isMessageSent = ref<boolean>(false);
 
 const formData = reactive({
   message: "",
@@ -80,7 +93,8 @@ const submitMessage = async () => {
     await supabase.from("messages").insert({
       ...formData,
     });
-    getMessages();
+    await getMessages();
+    isMessageSent.value = true;
   } catch (e) {
     console.log(e);
   }
@@ -196,6 +210,23 @@ defineExpose({
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
+  }
+}
+
+.sent {
+  background: #F2F9D9;
+  border: 0.5px solid #0DA858;
+  border-radius: 8px;
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+
+  &__green {
+    font-weight: 700;
+    color: #0DA858;
   }
 }
 </style>

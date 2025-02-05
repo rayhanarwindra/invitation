@@ -22,8 +22,9 @@ const id = {
   write_message: "Tulis ucapan",
   name: "Nama",
   write_name: "Tulis nama",
-  send_message: "Kirim Ucapan"
-
+  send_message: "Kirim Ucapan",
+  message_sent: "Ucapan terkirim",
+  thank_you: "Terima kasih"
 };
 
 export default id;
