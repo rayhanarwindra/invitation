@@ -33,6 +33,7 @@
           </button>
         </div>
       </div>
+      <img :src="vines" class="content__vines" alt="vines" />
     </div>
   </div>
 </template>
@@ -45,6 +46,7 @@ import honeymoon from "../assets/honeymoon.webp";
 import house from "../assets/house.webp";
 import qris from "../assets/qris.png";
 import copy from "../assets/copy.svg";
+import vines from "../assets/vines.svg";
 import { ref } from "vue";
 
 const { t } = useI18n();
@@ -52,22 +54,21 @@ const toast = useToast();
 
 const copyBankAccount = async () => {
   await navigator.clipboard.writeText("5405202376");
-  toast.default(t('copied'), {
-    position: 'top',
+  toast.default(t("copied"), {
+    position: "top",
     duration: 2500,
-    queue: true
-  })
+    queue: true,
+  });
 };
 
 const rootElement = ref<HTMLElement | null>(null);
 
 defineExpose({
   getRootElement: () => rootElement.value,
-})
+});
 </script>
 
 <style scoped lang="scss">
-
 .gift {
   background-color: #312a17;
   background-position: center;
@@ -106,6 +107,7 @@ defineExpose({
 }
 
 .content {
+  position: relative;
   background-image: url("../assets/kubah.svg");
   background-repeat: no-repeat;
   background-position: center top;
@@ -113,8 +115,15 @@ defineExpose({
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 128px;
+  padding-bottom: 100px;
   margin-top: 30px;
+
+  &__vines {
+    position: absolute;
+    width: 100%;
+    bottom: -85px;
+    z-index: 2;
+  }
 
   &__title {
     color: #5b8568;

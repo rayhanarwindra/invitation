@@ -16,7 +16,14 @@ const id = {
   home: "BANGUN RUMAH KECIL KAMI",
   or: "ATAU",
   copy: "Salin",
-  copied: "Tersalin ke clipboard"
+  copied: "Tersalin ke clipboard",
+  messages: "Ucapan",
+  anything_to_say: "Ada yang ingin disampaikan ke mempelai?",
+  write_message: "Tulis ucapan",
+  name: "Nama",
+  write_name: "Tulis nama",
+  send_message: "Kirim Ucapan"
+
 };
 
 export default id;

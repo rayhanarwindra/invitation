@@ -67,7 +67,7 @@ defineExpose({
 .event {
   background: #fff8f3;
   position: relative;
-  padding-bottom: 150px;
+  padding-bottom: 190px;
 
   &__title {
     text-align: center;
