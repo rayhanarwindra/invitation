@@ -163,6 +163,7 @@ defineExpose({
     padding: 16px 12px;
     font-weight: 500;
     font-family: "Montserrat", serif;
+    resize: none;
   }
 
   &__group {
