@@ -31,7 +31,7 @@
             <img :src="copy" alt="copy" />
             <span>{{ t("copy") }}</span>
           </button>
-          <div class="bank__copy" v-else>
+          <div class="bank__copy bank__copied" v-else>
             <span>{{ t("copied") }}</span>
             <img class="bank__check" :src="check" alt="check" />
           </div>
@@ -226,6 +226,10 @@ defineExpose({
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
+  }
+
+  &__copied {
+    cursor: default;
   }
 }
 </style>
