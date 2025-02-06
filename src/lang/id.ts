@@ -16,7 +16,7 @@ const id = {
   home: "BANGUN RUMAH KECIL KAMI",
   or: "ATAU",
   copy: "Salin",
-  copied: "Tersalin ke clipboard",
+  copied: "Tersalin!",
   messages: "Ucapan",
   anything_to_say: "Ada yang ingin disampaikan ke mempelai?",
   write_message: "Tulis ucapan",

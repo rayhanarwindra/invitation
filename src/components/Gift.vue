@@ -27,10 +27,14 @@
         </span>
         <div class="bank__details">
           <span class="bank__account">5405202376</span>
-          <button class="bank__copy" @click="copyBankAccount">
+          <button v-if="!isTextCopied" class="bank__copy" @click="copyBankAccount">
             <img :src="copy" alt="copy" />
             <span>{{ t("copy") }}</span>
           </button>
+          <div class="bank__copy" v-else>
+            <span>{{ t("copied") }}</span>
+            <img class="bank__check" :src="check" alt="check" />
+          </div>
         </div>
       </div>
       <img :src="vines" class="content__vines" alt="vines" />
@@ -40,25 +44,21 @@
 
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-import { useToast } from "vue-toast-notification";
 
 import honeymoon from "../assets/honeymoon.webp";
 import house from "../assets/house.webp";
 import qris from "../assets/qris.png";
 import copy from "../assets/copy.svg";
 import vines from "../assets/vines.svg";
+import check from "../assets/check.svg"
 import { ref } from "vue";
 
 const { t } = useI18n();
-const toast = useToast();
+const isTextCopied = ref(false)
 
 const copyBankAccount = async () => {
   await navigator.clipboard.writeText("5405202376");
-  toast.default(t("copied"), {
-    position: "top",
-    duration: 2500,
-    queue: true,
-  });
+  isTextCopied.value = true
 };
 
 const rootElement = ref<HTMLElement | null>(null);
@@ -178,6 +178,11 @@ defineExpose({
 }
 
 .bank {
+  &__check {
+    width: 16px;
+    height: 16px;
+  }
+
   &__holder {
     font-size: 16px;
     line-height: 24px;

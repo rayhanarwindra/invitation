@@ -16,7 +16,7 @@ const en = {
   home: "BUILD OUR LITTLE HOME",
   or: "OR",
   copy: "Copy",
-  copied: "Copied to clipboard",
+  copied: "Copied!",
   messages: "Messages",
   anything_to_say: "Anything to say to the bride and groom to be?",
   write_message: "Your message",
