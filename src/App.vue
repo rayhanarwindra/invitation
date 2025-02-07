@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTemplateRef } from "vue";
+import { useTemplateRef } from 'vue'
 import {
   Navbar,
   Landing,
@@ -8,16 +8,16 @@ import {
   Gift,
   Message,
   BottomBar,
-} from "./components/index.ts";
+} from './components/index.ts'
 
-const event = useTemplateRef<typeof Event>("event");
-const gallery = useTemplateRef<typeof Gallery>("gallery");
-const gift = useTemplateRef<typeof Gift>("gift");
-const message = useTemplateRef<typeof Message>("message");
+const event = useTemplateRef<typeof Event>('event')
+const gallery = useTemplateRef<typeof Gallery>('gallery')
+const gift = useTemplateRef<typeof Gift>('gift')
+const message = useTemplateRef<typeof Message>('message')
 
 const scrollTo = (element: HTMLElement | null) => {
-  element?.scrollIntoView({ behavior: "smooth" });
-};
+  element?.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <template>
@@ -43,7 +43,7 @@ const scrollTo = (element: HTMLElement | null) => {
 .app {
   display: flex;
   justify-content: center;
-  font-family: "Montserrat", serif;
+  font-family: 'Montserrat', serif;
 
   &__container {
     max-width: 576px;

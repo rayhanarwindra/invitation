@@ -1,13 +1,13 @@
 <template>
   <div ref="rootElement" class="event">
-    <div class="event__title">{{ t("event_details") }}</div>
+    <div class="event__title">{{ t('event_details') }}</div>
     <div class="event__details details">
       <span class="details__highlight">
-        {{ t("saturday") }}
+        {{ t('saturday') }}
       </span>
       <div class="details__time">
         <span class="details__month">
-          {{ t("october") }}
+          {{ t('october') }}
         </span>
         <span class="details__date">11</span>
         <span class="details__year">2025</span>
@@ -17,7 +17,7 @@
     <div class="event__location location">
       <img alt="pinpoint" :src="PinPoint" />
       <div class="location__details">
-        <span class="location__building">{{ t("al_azhar") }}</span>
+        <span class="location__building">{{ t('al_azhar') }}</span>
         <span class="location__area">KEBAYORAN BARU, JAKARTA SELATAN</span>
       </div>
     </div>
@@ -36,27 +36,27 @@
     </div>
     <a target="_blank" :href="calendarLink" class="event__calendar">
       <img alt="calendar" :src="GoogleCalendar" />
-      {{ t("add_to_calendar") }}
+      {{ t('add_to_calendar') }}
     </a>
     <img alt="masjid background" :src="Masjid" class="event__masjid" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-import PinPoint from "../assets/pinpoint.svg";
-import GoogleCalendar from "../assets/google_calendar.svg";
-import Masjid from "../assets/masjid.svg";
-import { ref } from "vue";
+import { useI18n } from 'vue-i18n'
+import PinPoint from '../assets/pinpoint.svg'
+import GoogleCalendar from '../assets/google_calendar.svg'
+import Masjid from '../assets/masjid.svg'
+import { ref } from 'vue'
 
-const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-const PLACE_ID = import.meta.env.VITE_PLACE_ID;
+const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+const PLACE_ID = import.meta.env.VITE_PLACE_ID
 
-const { t } = useI18n();
+const { t } = useI18n()
 const calendarLink =
-  "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ray+%26+Nabila%27s+Wedding&dates=20251011T110000/20251011T130000&details=Ray+%26+Nabila%27s+Wedding&location=Masjid+Agung+Al-Azhar+Blok+M%2C+Jakarta%2C+Indonesia&ctz=Asia/Jakarta";
+  'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ray+%26+Nabila%27s+Wedding&dates=20251011T110000/20251011T130000&details=Ray+%26+Nabila%27s+Wedding&location=Masjid+Agung+Al-Azhar+Blok+M%2C+Jakarta%2C+Indonesia&ctz=Asia/Jakarta'
 
-const rootElement = ref<HTMLElement | null>(null);
+const rootElement = ref<HTMLElement | null>(null)
 
 defineExpose({
   getRootElement: () => rootElement.value,
@@ -154,7 +154,7 @@ defineExpose({
     color: #5b8568;
     font-size: 40px;
     line-height: 60px;
-    font-family: "Great Vibes", serif;
+    font-family: 'Great Vibes', serif;
   }
 
   &__year {

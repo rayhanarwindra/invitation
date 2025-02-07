@@ -1,6 +1,10 @@
 <template>
   <div class="bottomBar">
-    <button @click="$emit(item.text)" class="bottomBar__item" v-for="item in items">
+    <button
+      @click="$emit(item.text)"
+      class="bottomBar__item"
+      v-for="item in items"
+    >
       <img :src="item.image" :alt="item.text" />
       <span>{{ t(item.text) }}</span>
     </button>
@@ -8,33 +12,33 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import event from "../assets/event.svg";
-import gallery from "../assets/gallery.svg";
-import gift from "../assets/gift.svg";
-import message from "../assets/message.svg";
-import { useI18n } from "vue-i18n";
+import { ref } from 'vue'
+import event from '../assets/event.svg'
+import gallery from '../assets/gallery.svg'
+import gift from '../assets/gift.svg'
+import message from '../assets/message.svg'
+import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n();
+const { t } = useI18n()
 
 const items = ref([
   {
-    text: "event",
+    text: 'event',
     image: event,
   },
   {
-    text: "gallery",
+    text: 'gallery',
     image: gallery,
   },
   {
-    text: "gift",
+    text: 'gift',
     image: gift,
   },
   {
-    text: "message",
+    text: 'message',
     image: message,
   },
-]);
+])
 </script>
 
 <style scoped lang="scss">

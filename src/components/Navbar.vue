@@ -30,28 +30,28 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, type Ref } from "vue";
-import Indonesian from "../assets/Indonesia (ID).svg";
-import English from "../assets/United Kingdom (GB).svg";
-import ChevronDown from "../assets/chevron.svg";
-import { useI18n } from "vue-i18n";
+import { onMounted, ref, type Ref } from 'vue'
+import Indonesian from '../assets/Indonesia (ID).svg'
+import English from '../assets/United Kingdom (GB).svg'
+import ChevronDown from '../assets/chevron.svg'
+import { useI18n } from 'vue-i18n'
 
-const isLangOpen = ref<boolean>(false);
-const langDropdown: Ref<HTMLDivElement | null> = ref(null);
-const i18n = useI18n();
+const isLangOpen = ref<boolean>(false)
+const langDropdown: Ref<HTMLDivElement | null> = ref(null)
+const i18n = useI18n()
 
 onMounted(() => {
-  document.addEventListener("click", handleClickOutside);
-});
+  document.addEventListener('click', handleClickOutside)
+})
 
 const handleClickOutside = (event: MouseEvent) => {
   if (
     langDropdown.value &&
     !langDropdown.value.contains(event.target as Node)
   ) {
-    isLangOpen.value = false;
+    isLangOpen.value = false
   }
-};
+}
 
 const toggleLanguage = (lang: string) => {
   i18n.locale.value = lang
@@ -81,7 +81,7 @@ const toggleLanguage = (lang: string) => {
   }
 
   &__ampersand {
-    font-family: "Pinyon Script", serif;
+    font-family: 'Pinyon Script', serif;
   }
 }
 

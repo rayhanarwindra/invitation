@@ -1,6 +1,6 @@
 <template>
   <div class="message" ref="rootElement">
-    <div class="message__title">{{ t("messages") }}</div>
+    <div class="message__title">{{ t('messages') }}</div>
     <div class="message__content">
       <form
         v-if="!isMessageSent"
@@ -9,7 +9,7 @@
       >
         <div class="form__group">
           <label for="message" class="form__label">{{
-            t("anything_to_say")
+            t('anything_to_say')
           }}</label>
           <textarea
             id="message"
@@ -21,7 +21,7 @@
           ></textarea>
         </div>
         <div class="form__group">
-          <label for="sender" class="form__label">{{ t("name") }}</label>
+          <label for="sender" class="form__label">{{ t('name') }}</label>
           <input
             id="sender"
             name="sender"
@@ -30,13 +30,13 @@
             class="form__input"
           />
         </div>
-        <button class="form__button">{{ t("send_message") }}</button>
+        <button class="form__button">{{ t('send_message') }}</button>
       </form>
       <div class="message__sent sent" v-else>
         <img class="sent__check" :src="check" alt="check" />
         <span class="sent__text">
-          <span class="sent__green">{{ t("message_sent") }}!</span>
-          {{ t("thank_you") }}.
+          <span class="sent__green">{{ t('message_sent') }}!</span>
+          {{ t('thank_you') }}.
         </span>
       </div>
       <div class="message__items">
@@ -44,69 +44,107 @@
           <span class="item__sender">{{ message.sender }}</span>
           <span class="item__message">{{ message.message }}</span>
         </div>
+        <div class="message__pagination">
+          <vue-awesome-paginate
+            :total-items="totalPage"
+            :items-per-page="5"
+            :max-pages-shown="3"
+            v-model="currentPage"
+            @click="onChangePage"
+          >
+            <template #prev-button>
+              <ArrowLeft class="pagination__arrow" />
+            </template>
+            <template #next-button>
+              <ArrowRight class="pagination__arrow" />
+            </template>
+          </vue-awesome-paginate>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, ref } from "vue";
-import { useI18n } from "vue-i18n";
-import { supabase } from "../lib/supabaseClient";
-import check from "../assets/check.svg";
+import { onMounted, reactive, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { supabase } from '../lib/supabaseClient'
+import check from '../assets/check.svg'
+import { VueAwesomePaginate } from 'vue-awesome-paginate'
+import ArrowRight from './ArrowRight.vue'
+import ArrowLeft from './ArrowLeft.vue'
 
 interface MessageType {
-  sender: string;
-  message: string;
-  created_at: string;
-  id: number;
+  sender: string
+  message: string
+  created_at: string
+  id: number
 }
 
-const { t } = useI18n();
+const { t } = useI18n()
 
-const rootElement = ref<HTMLElement | null>(null);
-const isMessageSent = ref<boolean>(false);
+const rootElement = ref<HTMLElement | null>(null)
+const isMessageSent = ref<boolean>(false)
+const currentPage = ref<number>(1)
+const messages = ref<MessageType[]>([])
+const totalPage = ref<number>(0)
 
 const formData = reactive({
-  message: "",
-  sender: "",
-});
+  message: '',
+  sender: '',
+})
 
-const messages = ref<MessageType[]>([]);
+onMounted(() => {
+  getTotalMessages()
+  getMessages()
+})
+
+const getTotalMessages = async () => {
+  const { count } = await supabase
+    .from('messages')
+    .select('*', { count: 'exact', head: true })
+  if (count) {
+    totalPage.value = count
+  }
+}
 
 const getMessages = async () => {
+  const page = currentPage.value - 1
   const { data } = await supabase
-    .from("messages")
+    .from('messages')
     .select()
-    .order("created_at", { ascending: false })
-    .returns<MessageType[]>();
+    .range(0 + page * 5, 4 + page * 5)
+    .order('created_at', { ascending: false })
+    .returns<MessageType[]>()
   if (data) {
-    messages.value = data;
+    messages.value = data
   }
-};
+}
 
 const submitMessage = async () => {
   if (!formData.message || !formData.sender) {
-    return;
+    return
   }
   try {
-    await supabase.from("messages").insert({
+    await supabase.from('messages').insert({
       ...formData,
-    });
-    await getMessages();
-    isMessageSent.value = true;
+    })
+    await getMessages()
+    await getTotalMessages()
+    isMessageSent.value = true
   } catch (e) {
-    console.log(e);
+    console.log(e)
   }
-};
+}
 
-onMounted(() => {
-  getMessages();
-});
+const onChangePage = (page: number) => {
+  currentPage.value = page
+  getMessages()
+}
 
 defineExpose({
   getRootElement: () => rootElement.value,
-});
+})
 </script>
 
 <style scoped lang="scss">
@@ -137,6 +175,10 @@ defineExpose({
     flex-direction: column;
     gap: 20px;
   }
+
+  &__pagination {
+    margin: 0 auto;
+  }
 }
 
 .form {
@@ -162,7 +204,7 @@ defineExpose({
     border-radius: 12px;
     padding: 16px 12px;
     font-weight: 500;
-    font-family: "Montserrat", serif;
+    font-family: 'Montserrat', serif;
     resize: none;
   }
 
@@ -215,8 +257,8 @@ defineExpose({
 }
 
 .sent {
-  background: #F2F9D9;
-  border: 0.5px solid #0DA858;
+  background: #f2f9d9;
+  border: 0.5px solid #0da858;
   border-radius: 8px;
   padding: 6px 8px;
   display: flex;
@@ -227,7 +269,47 @@ defineExpose({
 
   &__green {
     font-weight: 700;
-    color: #0DA858;
+    color: #0da858;
   }
+}
+
+.pagination {
+  &__arrow {
+    fill: #000;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    border: none;
+    background: none;
+  }
+}
+</style>
+
+<style>
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 131px;
+}
+
+.paginate-buttons {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.number-buttons {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: 'Montserrat', serif;
+}
+
+.active-page {
+  font-weight: 700;
+  text-decoration: underline;
 }
 </style>

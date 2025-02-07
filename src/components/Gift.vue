@@ -2,24 +2,24 @@
   <div ref="rootElement" class="gift">
     <div class="gift__content content">
       <img class="content__lantern" src="../assets/lantern.svg" alt="lantern" />
-      <span class="content__title">{{ t("wedding_gift") }}</span>
+      <span class="content__title">{{ t('wedding_gift') }}</span>
       <span class="content__description">
-        {{ t("giving") }}
-        <span>{{ t("cashless") }}</span> {{ t("our_journey") }}
+        {{ t('giving') }}
+        <span>{{ t('cashless') }}</span> {{ t('our_journey') }}
       </span>
       <div class="gift__goals">
         <div class="gift__goal goal">
           <img class="goal__image" :src="honeymoon" alt="honeymoon to japan" />
-          <span class="goal__title">{{ t("honeymoon") }}</span>
+          <span class="goal__title">{{ t('honeymoon') }}</span>
         </div>
         <span class="gift__ampersand">&</span>
         <div class="gift__goal goal">
           <img class="goal__image" :src="house" alt="our house" />
-          <span class="goal__title">{{ t("home") }}</span>
+          <span class="goal__title">{{ t('home') }}</span>
         </div>
       </div>
       <img class="gift__qris" :src="qris" alt="qris" />
-      <span class="gift__or">{{ t("or") }}</span>
+      <span class="gift__or">{{ t('or') }}</span>
       <div class="gift__bank bank">
         <span class="bank__holder">
           <span class="bank__name">BCA </span>
@@ -27,12 +27,16 @@
         </span>
         <div class="bank__details">
           <span class="bank__account">5405202376</span>
-          <button v-if="!isTextCopied" class="bank__copy" @click="copyBankAccount">
+          <button
+            v-if="!isTextCopied"
+            class="bank__copy"
+            @click="copyBankAccount"
+          >
             <img :src="copy" alt="copy" />
-            <span>{{ t("copy") }}</span>
+            <span>{{ t('copy') }}</span>
           </button>
           <div class="bank__copy bank__copied" v-else>
-            <span>{{ t("copied") }}</span>
+            <span>{{ t('copied') }}</span>
             <img class="bank__check" :src="check" alt="check" />
           </div>
         </div>
@@ -43,29 +47,29 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
+import { useI18n } from 'vue-i18n'
 
-import honeymoon from "../assets/honeymoon.webp";
-import house from "../assets/house.webp";
-import qris from "../assets/qris.png";
-import copy from "../assets/copy.svg";
-import vines from "../assets/vines.svg";
-import check from "../assets/check.svg"
-import { ref } from "vue";
+import honeymoon from '../assets/honeymoon.webp'
+import house from '../assets/house.webp'
+import qris from '../assets/qris.png'
+import copy from '../assets/copy.svg'
+import vines from '../assets/vines.svg'
+import check from '../assets/check.svg'
+import { ref } from 'vue'
 
-const { t } = useI18n();
+const { t } = useI18n()
 const isTextCopied = ref(false)
 
 const copyBankAccount = async () => {
-  await navigator.clipboard.writeText("5405202376");
+  await navigator.clipboard.writeText('5405202376')
   isTextCopied.value = true
-};
+}
 
-const rootElement = ref<HTMLElement | null>(null);
+const rootElement = ref<HTMLElement | null>(null)
 
 defineExpose({
   getRootElement: () => rootElement.value,
-});
+})
 </script>
 
 <style scoped lang="scss">
@@ -94,7 +98,7 @@ defineExpose({
     font-size: 48px;
     line-height: 36px;
     align-self: center;
-    font-family: "Pinyon Script", serif;
+    font-family: 'Pinyon Script', serif;
   }
 
   &__or {
@@ -108,7 +112,7 @@ defineExpose({
 
 .content {
   position: relative;
-  background-image: url("../assets/kubah.svg");
+  background-image: url('../assets/kubah.svg');
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;

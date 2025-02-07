@@ -16,25 +16,25 @@
 </template>
 
 <script setup lang="ts">
-import { onBeforeMount, ref } from "vue";
+import { onBeforeMount, ref } from 'vue'
 
 const backgroundImage = ref(
-  new URL("../assets/landing.webp", import.meta.url).href
-);
-const imageLoaded = ref(false);
+  new URL('../assets/landing.webp', import.meta.url).href
+)
+const imageLoaded = ref(false)
 onBeforeMount(async () => {
-  await preLoadImage();
-  imageLoaded.value = true;
-});
+  await preLoadImage()
+  imageLoaded.value = true
+})
 
 const preLoadImage = () => {
   return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.src = backgroundImage.value;
-    img.onload = resolve;
-    img.onerror = reject;
-  });
-};
+    const img = new Image()
+    img.src = backgroundImage.value
+    img.onload = resolve
+    img.onerror = reject
+  })
+}
 </script>
 
 <style scoped lang="scss">
@@ -66,7 +66,7 @@ const preLoadImage = () => {
         rgba(#fff, 0)
       );
       animation: shimmer 5s infinite;
-      content: "";
+      content: '';
     }
 
     @keyframes shimmer {
