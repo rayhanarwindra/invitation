@@ -30,7 +30,12 @@
             class="form__input"
           />
         </div>
-        <button class="form__button">{{ t('send_message') }}</button>
+        <button
+          :disabled="!formData.message || !formData.sender"
+          class="form__button"
+        >
+          {{ t('send_message') }}
+        </button>
       </form>
       <div class="message__sent sent" v-else>
         <img class="sent__check" :src="check" alt="check" />
@@ -46,16 +51,27 @@
         </div>
         <div class="message__pagination">
           <vue-awesome-paginate
-            :total-items="totalPage"
             v-model="currentPage"
+            @click="onChangePage"
+            :total-items="totalItems"
             :items-per-page="5"
-            :max-pages-shown="5"
+            :max-pages-shown="3"
           >
             <template #prev-button>
-              <ArrowLeft aria-label="previous page" class="pagination__arrow" />
+              <ArrowLeft
+                aria-label="previous page"
+                class="pagination__arrow"
+                :class="{ 'pagination__arrow-disabled': currentPage === 1 }"
+              />
             </template>
             <template #next-button>
-              <ArrowRight aria-label="next page" class="pagination__arrow" />
+              <ArrowRight
+                aria-label="next page"
+                class="pagination__arrow"
+                :class="{
+                  'pagination__arrow-disabled': currentPage === totalPages,
+                }"
+              />
             </template>
           </vue-awesome-paginate>
         </div>
@@ -65,7 +81,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { supabase } from '../lib/supabaseClient'
 import check from '../assets/check.svg'
@@ -86,7 +102,7 @@ const rootElement = ref<HTMLElement | null>(null)
 const isMessageSent = ref<boolean>(false)
 const currentPage = ref<number>(1)
 const messages = ref<MessageType[]>([])
-const totalPage = ref<number>(0)
+const totalItems = ref<number>(0)
 
 const formData = reactive({
   message: '',
@@ -103,7 +119,7 @@ const getTotalMessages = async () => {
     .from('messages')
     .select('*', { count: 'exact', head: true })
   if (count) {
-    totalPage.value = count
+    totalItems.value = count
   }
 }
 
@@ -135,6 +151,10 @@ const submitMessage = async () => {
     console.log(e)
   }
 }
+
+const totalPages = computed(() => {
+  return Math.ceil(totalItems.value / 5)
+})
 
 const onChangePage = (page: number) => {
   currentPage.value = page
@@ -232,6 +252,16 @@ defineExpose({
     letter-spacing: 0.2px;
     border: none;
     padding: 16px 0;
+    transition: 0.3s;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 
@@ -277,6 +307,11 @@ defineExpose({
     fill: #000;
     display: flex;
     justify-content: space-between;
+
+    &-disabled {
+      cursor: not-allowed;
+      fill: #999;
+    }
   }
 
   &__buttons {
