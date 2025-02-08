@@ -47,16 +47,15 @@
         <div class="message__pagination">
           <vue-awesome-paginate
             :total-items="totalPage"
-            :items-per-page="5"
-            :max-pages-shown="3"
             v-model="currentPage"
-            @click="onChangePage"
+            :items-per-page="5"
+            :max-pages-shown="5"
           >
             <template #prev-button>
-              <ArrowLeft class="pagination__arrow" />
+              <ArrowLeft aria-label="previous page" class="pagination__arrow" />
             </template>
             <template #next-button>
-              <ArrowRight class="pagination__arrow" />
+              <ArrowRight aria-label="next page" class="pagination__arrow" />
             </template>
           </vue-awesome-paginate>
         </div>
