@@ -107,6 +107,11 @@ defineExpose({
     line-height: 18px;
     z-index: 2;
     position: relative;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__masjid {
