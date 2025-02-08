@@ -68,6 +68,7 @@ defineExpose({
   background: #fff8f3;
   position: relative;
   padding-bottom: 190px;
+  padding-top: 30px;
 
   &__title {
     text-align: center;

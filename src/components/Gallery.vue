@@ -27,6 +27,7 @@ defineExpose({
 <style scoped lang="scss">
 .gallery {
   background-color: #312a17;
+  padding-top: 30px;
   margin: 0;
 
   &__title {
