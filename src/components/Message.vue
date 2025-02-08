@@ -259,7 +259,7 @@ defineExpose({
       cursor: not-allowed;
     }
 
-    &:hover {
+    &:hover:enabled {
       opacity: 0.8;
     }
   }
