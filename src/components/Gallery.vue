@@ -48,11 +48,6 @@ defineExpose({
   margin-top: 20px;
   gap: 10px;
 
-  & > img {
-    transition: 0.3s;
-    
-  }
-
   &__one {
     grid-area: one;
     width: 100%;

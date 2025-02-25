@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar">
+  <nav :class="{ navbar__hidden: !showNavbar }" class="navbar" id="navbar">
     <span class="navbar__title"
       >R<span class="navbar__ampersand">&</span>N</span
     >
@@ -38,10 +38,13 @@ import { useI18n } from 'vue-i18n'
 
 const isLangOpen = ref<boolean>(false)
 const langDropdown: Ref<HTMLDivElement | null> = ref(null)
+const showNavbar = ref<boolean>(true)
+
 const i18n = useI18n()
 
 onMounted(() => {
   document.addEventListener('click', handleClickOutside)
+  window.addEventListener('scroll', handleScroll)
 })
 
 const handleClickOutside = (event: MouseEvent) => {
@@ -51,6 +54,20 @@ const handleClickOutside = (event: MouseEvent) => {
   ) {
     isLangOpen.value = false
   }
+}
+
+let lastScrollY = 0
+
+const handleScroll = () => {
+  const currentScrollY = window.scrollY
+
+  if (currentScrollY > lastScrollY) {
+    showNavbar.value = false
+  } else {
+    showNavbar.value = true
+  }
+
+  lastScrollY = currentScrollY
 }
 
 const toggleLanguage = (lang: string) => {
@@ -71,6 +88,12 @@ const toggleLanguage = (lang: string) => {
   box-sizing: border-box;
   position: fixed;
   z-index: 4;
+  top: 0;
+  transition: top 0.3s;
+
+  &__hidden {
+    top: -48px;
+  }
 
   &__title {
     color: #fff;
