@@ -13,7 +13,12 @@
           <img alt="uk flag" :src="English" />
           English
         </template>
-        <img alt="chevron down" :src="ChevronDown" />
+        <img
+          alt="chevron down"
+          :src="ChevronDown"
+          class="language__chevron"
+          :class="{ language__shown: isLangOpen }"
+        />
       </button>
       <div v-show="isLangOpen" class="language__dropdown">
         <button @click="toggleLanguage('id')" class="language__option">
@@ -163,6 +168,14 @@ const toggleLanguage = (lang: string) => {
     &:hover {
       background: #e4f0e8;
     }
+  }
+
+  &__chevron {
+    transition: transform 0.4s;
+  }
+
+  &__shown {
+    transform: rotate(180deg);
   }
 }
 </style>
