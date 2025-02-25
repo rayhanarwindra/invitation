@@ -63,6 +63,10 @@ const isTextCopied = ref(false)
 const copyBankAccount = async () => {
   await navigator.clipboard.writeText('5405202376')
   isTextCopied.value = true
+
+  setTimeout(() => {
+    isTextCopied.value = false
+  }, 3000)
 }
 
 const rootElement = ref<HTMLElement | null>(null)
