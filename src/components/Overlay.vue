@@ -8,7 +8,7 @@
           .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
           .join(' ')
       }}</span>
-      <img class="overlay__separator" :src="separator" />
+      <img alt="separator" class="overlay__separator" :src="separator" />
       <button @click="emit('open-invitation')" class="overlay__button">
         Buka Undangan
       </button>
