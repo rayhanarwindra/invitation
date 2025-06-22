@@ -2,7 +2,12 @@
   <div class="overlay">
     <div class="overlay__content">
       <span class="overlay__header">Kepada Yth.</span>
-      <span class="overlay__recipient">{{ recipient }}</span>
+      <span class="overlay__recipient">{{
+        recipient
+          ?.split('_')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ')
+      }}</span>
       <img class="overlay__separator" :src="separator" />
       <button @click="emit('open-invitation')" class="overlay__button">
         Buka Undangan
