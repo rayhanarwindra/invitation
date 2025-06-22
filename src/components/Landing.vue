@@ -1,5 +1,5 @@
 <template>
-  <div class="landing">
+  <div class="landing" :class="{ 'landing__has-openned': props.hasOpenned }">
     <img
       v-if="imageLoaded"
       alt="landing image"
@@ -17,6 +17,10 @@
 
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue'
+
+const props = defineProps<{
+  hasOpenned?: boolean
+}>()
 
 const backgroundImage = ref(
   new URL('../assets/landing.webp', import.meta.url).href
@@ -40,8 +44,11 @@ const preLoadImage = () => {
 <style scoped lang="scss">
 .landing {
   width: 100%;
-  margin-top: 48px;
   position: relative;
+
+  &__has-openned {
+    margin-top: 48px;
+  }
 
   &__skeleton {
     width: 576px;

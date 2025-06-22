@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTemplateRef } from 'vue'
+import { useTemplateRef, ref } from 'vue'
 import {
   Navbar,
   Landing,
@@ -8,28 +8,38 @@ import {
   Gift,
   Message,
   BottomBar,
-} from './components/index.ts'
+  Overlay,
+} from './components/index'
 
 const event = useTemplateRef<typeof Event>('event')
 const gallery = useTemplateRef<typeof Gallery>('gallery')
 const gift = useTemplateRef<typeof Gift>('gift')
 const message = useTemplateRef<typeof Message>('message')
 
+const hasOpenned = ref<boolean>(false)
+
 const scrollTo = (element: HTMLElement | null) => {
   element?.scrollIntoView({ behavior: 'smooth' })
+}
+
+const openInvitation = () => {
+  hasOpenned.value = true
+  document.body.style.overflow = 'auto'
 }
 </script>
 
 <template>
   <div class="app">
     <div class="app__container">
-      <Navbar />
-      <Landing />
+      <Overlay @open-invitation="openInvitation()" v-show="!hasOpenned" />
+      <Navbar v-show="hasOpenned" />
+      <Landing :hasOpenned="hasOpenned" />
       <Event ref="event" />
       <Gallery ref="gallery" />
       <Gift ref="gift" />
       <Message ref="message" />
       <BottomBar
+        v-show="hasOpenned"
         @event="scrollTo(event?.getRootElement())"
         @gallery="scrollTo(gallery?.getRootElement())"
         @gift="scrollTo(gift?.getRootElement())"
@@ -48,6 +58,7 @@ const scrollTo = (element: HTMLElement | null) => {
   &__container {
     max-width: 576px;
     width: 100%;
+    position: relative;
   }
 }
 </style>
