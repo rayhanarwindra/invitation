@@ -55,7 +55,7 @@ onUnmounted(() => {
   justify-content: center;
 
   &__content {
-    margin-bottom: 52px;
+    margin-bottom: 82px;
     display: flex;
     flex-direction: column;
     text-align: center;
