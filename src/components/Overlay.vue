@@ -1,6 +1,7 @@
 <template>
   <div class="overlay">
-    <div class="overlay__content">
+    <div class="overlay__container">
+      <div class="overlay__content">
       <span class="overlay__header">Kepada Yth.</span>
       <span class="overlay__recipient">{{
         recipient
@@ -12,6 +13,7 @@
       <button @click="emit('open-invitation')" class="overlay__button">
         Buka Undangan
       </button>
+    </div>
     </div>
   </div>
 </template>
@@ -63,8 +65,15 @@ onUnmounted(() => {
   align-items: flex-end;
   justify-content: center;
 
+  &__container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
   &__content {
-    margin-bottom: 82px;
+    position: absolute;
+    bottom: 53px;
     display: flex;
     flex-direction: column;
     text-align: center;
