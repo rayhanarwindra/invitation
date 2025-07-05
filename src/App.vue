@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTemplateRef, ref } from 'vue'
+import { useTemplateRef, ref, watch } from 'vue'
 import {
   Navbar,
   Landing,
@@ -24,8 +24,25 @@ const scrollTo = (element: HTMLElement | null) => {
 
 const openInvitation = () => {
   hasOpenned.value = true
-  document.body.style.overflow = 'auto'
 }
+
+if (!new URLSearchParams(window.location.search).get('to')) {
+  openInvitation()
+}
+
+watch(
+  () => hasOpenned.value,
+  (newValue) => {
+    if (newValue) {
+      document.body.style.overflow = 'auto'
+    } else {
+      document.body.style.overflow = 'hidden'
+    }
+  },
+  { immediate: true }
+)
+
+
 </script>
 
 <template>
