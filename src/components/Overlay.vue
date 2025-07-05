@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
+import { nextTick, onMounted, onUnmounted } from 'vue'
 import separator from '../assets/separator.webp'
 
 const queryParams = new URLSearchParams(window.location.search)
@@ -30,9 +30,16 @@ if (!recipient) {
   emit('open-invitation')
 }
 
+if ('scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
 onMounted(() => {
   if (recipient) {
-  document.body.style.overflow = 'hidden'
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.body.style.overflow = 'hidden';
+    }, 0);
   }
 })
 
