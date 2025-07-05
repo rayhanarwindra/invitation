@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import separator from '../assets/separator.webp'
 
 const queryParams = new URLSearchParams(window.location.search)
