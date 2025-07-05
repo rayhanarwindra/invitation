@@ -31,7 +31,9 @@ if (!recipient) {
 }
 
 onMounted(() => {
+  if (recipient) {
   document.body.style.overflow = 'hidden'
+  }
 })
 
 onUnmounted(() => {
