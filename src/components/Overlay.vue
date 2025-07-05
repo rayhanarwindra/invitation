@@ -73,7 +73,7 @@ onUnmounted(() => {
 
   &__content {
     position: absolute;
-    bottom: 53px;
+    bottom: 83px;
     display: flex;
     flex-direction: column;
     text-align: center;
