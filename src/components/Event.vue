@@ -12,7 +12,7 @@
         <span class="details__date">11</span>
         <span class="details__year">2025</span>
       </div>
-      <span class="details__highlight"> 11:00-13:00 </span>
+      <span class="details__highlight"> 08:00 - {{ t('onwards') }} </span>
     </div>
     <div class="event__location location">
       <img alt="pinpoint" :src="PinPoint" />
@@ -140,6 +140,10 @@ defineExpose({
     padding: 8px 0;
     width: 96px;
     text-align: center;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__time {

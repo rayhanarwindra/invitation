@@ -26,6 +26,7 @@ const id = {
   send_message: 'Kirim Ucapan',
   message_sent: 'Ucapan terkirim',
   thank_you: 'Terima kasih',
+  onwards: 'Selesai',
 }
 
 export default id

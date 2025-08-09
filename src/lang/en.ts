@@ -26,6 +26,7 @@ const en = {
   send_message: 'Send Message',
   message_sent: 'Message sent',
   thank_you: 'Thank you',
+  onwards: 'Onwards',
 }
 
 export default en
