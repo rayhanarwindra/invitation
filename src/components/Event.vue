@@ -12,7 +12,7 @@
         <span class="details__date">11</span>
         <span class="details__year">2025</span>
       </div>
-      <span class="details__highlight"> 08:00 - {{ t('onwards') }} </span>
+      <span class="details__highlight"> 08:00 - 10:00 </span>
     </div>
     <div class="event__location location">
       <img alt="pinpoint" :src="PinPoint" />
@@ -54,7 +54,7 @@ const PLACE_ID = import.meta.env.VITE_PLACE_ID
 
 const { t } = useI18n()
 const calendarLink =
-  'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ray+%26+Nabila%27s+Wedding&dates=20251011T110000/20251011T130000&details=Ray+%26+Nabila%27s+Wedding&location=Masjid+Agung+Al-Azhar+Blok+M%2C+Jakarta%2C+Indonesia&ctz=Asia/Jakarta'
+  'https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ray+%26+Nabila%27s+Wedding&dates=20251011T080000/20251011T100000&details=Ray+%26+Nabila%27s+Wedding&location=Masjid+Agung+Al-Azhar+Blok+M%2C+Jakarta%2C+Indonesia&ctz=Asia/Jakarta'
 
 const rootElement = ref<HTMLElement | null>(null)
 
@@ -137,13 +137,11 @@ defineExpose({
     font-weight: 500;
     border-top: 1px solid #5b8568;
     border-bottom: 1px solid #5b8568;
-    padding: 8px 0;
-    width: 96px;
     text-align: center;
-    min-height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 110px;
   }
 
   &__time {
